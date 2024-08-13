@@ -1,0 +1,107 @@
+/* Styles généraux */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Styles de l'en-tête */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+
+/* Styles de la navigation */
+.navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    button{
+        cursor: pointer;
+        background: none;
+        color: white;
+        border: none;
+        position: relative;
+         font-size: 16px;
+
+
+    }
+}
+
+
+.navigation li {
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+/* Styles du titre de l'en-tête */
+.header-title h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header-title p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.addProjet{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button{
+        background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    font-size: 16px;
+    margin-bottom: 15px;
+    }
+}
+
+.centrer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+   
+    a {
+        color: black;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
