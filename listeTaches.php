@@ -124,7 +124,7 @@ Database::disconnect();
 
                     echo '<td> <div>
                         <span id="valTache">' . $tache['etat'] . '</span>
-                        <button id="' . $tache['id_tache'] . '"><img src="img/icon_modif.svg" alt="icon" class="svg"></button>
+                        <button ><img src="img/icon_modif.svg" alt="icon" class="svg" id="' . $tache['id_tache'] . '"></button>
                     </div></td>';
 
 

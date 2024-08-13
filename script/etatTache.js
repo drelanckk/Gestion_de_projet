@@ -23,7 +23,7 @@ mesBouton.forEach(bouton => {
 })
 
 formEtat.addEventListener('submit', event => {
-    event.preventDefault();
+    // event.preventDefault();
 
     const formData = new FormData(formEtat);
     console.log('test')
