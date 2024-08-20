@@ -126,13 +126,13 @@ Database::disconnect();
                     echo '<td> 
                     
                     <div id="btnEtat">
-                        <button class="dropdown-button">' . $tache['etat'] . '<img src="img/icon_modif.svg" 
-                        alt="icon" class="svg" id="' . $tache['id_tache'] . '"></button>
+                        <button class="dropdown-button" id="'. $tache['id_tache'] . '"><span>' . $tache['etat'] . '
+                       </span> <img src="img/icon_modif.svg" alt="icon" class="svg" ></button>
 
                         <div class="dropdown-content">
-                            <a href="#">10 km</a>
-                            <a href="#">100 km</a>
-                            <a href="#">200 km</a>
+                            <a href="#" id="en_cour">en cour</a>
+                            <a href="#" id="terminer">terminer</a>
+                            
                           
                         </div>
                     </div></td>';

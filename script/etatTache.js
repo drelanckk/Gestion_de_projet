@@ -4,24 +4,63 @@ let modalEtat = document.getElementById('modalEtat')
 let valTache = document.getElementById('valTache')
 var span = document.querySelector(".close2")
 
-let id_tache = 0
-let mesBouton = document.querySelectorAll('#mesTaches button')
 
-
-span.onclick = function () {
-    modalEtat.style.display = 'none';
-}
 
 document.querySelectorAll('.dropdown-button').forEach(button => {
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', function (eventBtn) {
         // Fermer tous les autres dropdowns ouverts
         document.querySelectorAll('.dropdown-content').forEach(content => {
             content.classList.remove('show');
         });
 
+        //id tache
+        let id_tache = this.id
+        console.log(id_tache, "id tache")
+
+        //contenue du bouton
+        let btnChoix = this.textContent
+        console.log(btnChoix, "contenu bouton")
+
         // Récupérer le dropdown-content associé et le basculer
         const dropdownContent = this.nextElementSibling;
+
+        console.log(dropdownContent)
         dropdownContent.classList.toggle('show');
+
+        dropdownContent.addEventListener('click', (action) => {
+
+            //choix du nouvel etat
+            // action.target.id
+            
+            let choix
+                if (action.target.id === 'en_cour') {
+                    
+                    console.log('est egale')
+                    choix = 'en cour'
+
+                } else {
+                    console.log('ne lest pas')
+
+                   choix = action.target.id
+                }
+            // }
+
+            let prefixDeTest = choix.substring(0, 2)
+            console.log(prefixDeTest, " la liste prefixe")
+
+            if (btnChoix.includes(prefixDeTest)) {
+                console.log("meme choix")
+            } else {
+                EnregistrerEtat(choix, id_tache, eventBtn)
+            }
+
+
+            dropdownContent.classList.toggle('show');
+
+
+        })
+
+
     });
 });
 
@@ -34,15 +73,46 @@ window.addEventListener('click', (event) => {
     }
 });
 
-formEtat.addEventListener('submit', event => {
-    // event.preventDefault();
 
-    const formData = new FormData(formEtat);
-    console.log('test')
 
-    console.log(id_tache)
+// formEtat.addEventListener('submit', event => {
+//     // event.preventDefault();
 
+//     const formData = new FormData(formEtat);
+//     console.log('test')
+
+//     console.log(id_tache)
+
+//     formData.append('id_tache', id_tache);
+//     fetch('etatTache.php', {
+//         method: 'POST',
+//         body: formData
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 // console.log(test)
+//                 console.log(data)
+//                 valTache.innerHTML = `${data.valeur}`
+//                 modalEtat.style.display = 'none';
+
+//             } else {
+//                 console.log("erreurrrr !")
+//             }
+
+//         })
+//         .catch(error => {
+//             console.log('erreur :', error)
+//         })
+
+// })
+
+const EnregistrerEtat = (choixUser, id_tache, event) => {
+
+    const formData = new FormData
     formData.append('id_tache', id_tache);
+    formData.append('choixUser', choixUser);
+
     fetch('etatTache.php', {
         method: 'POST',
         body: formData
@@ -52,8 +122,10 @@ formEtat.addEventListener('submit', event => {
             if (data.success) {
                 // console.log(test)
                 console.log(data)
-                valTache.innerHTML = `${data.valeur}`
-                modalEtat.style.display = 'none';
+
+                const button = event.target
+                const textElement = button.querySelector('span');
+                textElement.textContent = data.valeur
 
             } else {
                 console.log("erreurrrr !")
@@ -64,16 +136,5 @@ formEtat.addEventListener('submit', event => {
             console.log('erreur :', error)
         })
 
-})
+}
 
-
-// Sélection du bouton et du menu déroulant
-// const dropdownButton = document.querySelector('.dropdown-button');
-// const dropdownContent = document.querySelector('.dropdown-content');
-
-// // Ajout de l'événement de clic sur le bouton
-// dropdownButton.addEventListener('click', () => {
-//     // Bascule l'affichage du menu déroulant
-//     console.log("test")
-//     dropdownContent.classList.toggle('show');
-// });
