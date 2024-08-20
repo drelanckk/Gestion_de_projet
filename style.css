@@ -208,12 +208,12 @@ th {
 #mesTaches{
 
 
-    button{
+    /* button{
         border: none;
         background: none;
         cursor: pointer;
         
-    }
+    } */
     .svg{
         width: 20px;
         height: auto;
@@ -222,4 +222,6 @@ th {
     
 
 }
+
+
 

@@ -12,15 +12,27 @@ span.onclick = function () {
     modalEtat.style.display = 'none';
 }
 
-mesBouton.forEach(bouton => {
-    bouton.addEventListener('click', (event) => {
+document.querySelectorAll('.dropdown-button').forEach(button => {
+    button.addEventListener('click', function(event) {
+        // Fermer tous les autres dropdowns ouverts
+        document.querySelectorAll('.dropdown-content').forEach(content => {
+            content.classList.remove('show');
+        });
 
-        id_tache = event.target.id
-        console.log(id_tache)
-        modalEtat.style.display = 'block';
+        // Récupérer le dropdown-content associé et le basculer
+        const dropdownContent = this.nextElementSibling;
+        dropdownContent.classList.toggle('show');
+    });
+});
 
-    })
-})
+// Fermer le menu si l'utilisateur clique en dehors de celui-ci
+window.addEventListener('click', (event) => {
+    if (!event.target.matches('.dropdown-button') && !event.target.closest('.dropdown-content')) {
+        document.querySelectorAll('.dropdown-content').forEach(content => {
+            content.classList.remove('show');
+        });
+    }
+});
 
 formEtat.addEventListener('submit', event => {
     // event.preventDefault();
@@ -54,3 +66,14 @@ formEtat.addEventListener('submit', event => {
 
 })
 
+
+// Sélection du bouton et du menu déroulant
+// const dropdownButton = document.querySelector('.dropdown-button');
+// const dropdownContent = document.querySelector('.dropdown-content');
+
+// // Ajout de l'événement de clic sur le bouton
+// dropdownButton.addEventListener('click', () => {
+//     // Bascule l'affichage du menu déroulant
+//     console.log("test")
+//     dropdownContent.classList.toggle('show');
+// });

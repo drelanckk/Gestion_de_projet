@@ -51,6 +51,7 @@ Database::disconnect();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style/popupEtat.css">
 
     <script src="script/scriptTache.js" defer></script>
     <script src="script/etatTache.js" defer></script>
@@ -122,11 +123,19 @@ Database::disconnect();
                     echo '<td>' . $tache['date_creat'] . '</td>';
                     echo '<td>' . $tache['delai'] . '</td>';
 
-                    echo '<td> <div>
-                        <span id="valTache">' . $tache['etat'] . '</span>
-                        <button ><img src="img/icon_modif.svg" alt="icon" class="svg" id="' . $tache['id_tache'] . '"></button>
-                    </div></td>';
+                    echo '<td> 
+                    
+                    <div id="btnEtat">
+                        <button class="dropdown-button">' . $tache['etat'] . '<img src="img/icon_modif.svg" 
+                        alt="icon" class="svg" id="' . $tache['id_tache'] . '"></button>
 
+                        <div class="dropdown-content">
+                            <a href="#">10 km</a>
+                            <a href="#">100 km</a>
+                            <a href="#">200 km</a>
+                          
+                        </div>
+                    </div></td>';
 
 
                     echo '</tr>';
@@ -134,7 +143,27 @@ Database::disconnect();
 
                 ?>
 
-<!-- <img src="img/icon_modif.svg" alt="icon"> -->
+ <!-- modifier l'etat de la  tache  -->
+
+ <div id="modalEtat" class="popupEtat">
+            <div class="contentEtat">
+                <span class="close2">&times;</span>
+                <!-- <p> popup modale!</p> -->
+                <!-- <div class="centrerVerticalement" id="popup"> -->
+                    <h2>Modifier l'etat</h2>
+                    <!-- <form id="formEtat" method="post">
+                        <select name="choixUser" id="">
+                            <option value="">selectionner</option>
+                            <option value="en_cours">en cours</option>
+                            <option value="terminer">terminer</option>
+                        </select>
+                        <input type="submit" value="modifier">
+
+                    </form> -->
+
+                </div>
+            </div>
+        </div>
 
 
 
@@ -179,29 +208,7 @@ Database::disconnect();
 
 
 
-    <!-- modifier l'etat de la  tache  -->
-
-    <section>
-        <div id="modalEtat" class="modal">
-            <div class="modal-content">
-                <span class="close2">&times;</span>
-                <!-- <p> popup modale!</p> -->
-                <div class="centrerVerticalement" id="popup">
-                    <h2>Modifier l'etat</h2>
-                    <form id="formEtat" method="post">
-                        <select name="choixUser" id="">
-                            <option value="">selectionner</option>
-                            <option value="en_cours">en cours</option>
-                            <option value="terminer">terminer</option>
-                        </select>
-                        <input type="submit" value="modifier">
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
 
 
